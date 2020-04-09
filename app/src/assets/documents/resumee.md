@@ -21,7 +21,7 @@ I’m doing some Markdown proselytizing on Github! Unfortunately, I’m still th
 
 ## AWARDS
 ### **Nothing but…**
-100,000 people viewed this page and 2 resumes created by me.  If you will be helped by me and get a job, please let me know it.
+X people viewed this page and X resumes created by me.  If you will be helped by me and get a job, please let me know it.
 
 ## EDUCATION
 ### **Shonan Fujisawa University** | *April 2016 - March 2021*
