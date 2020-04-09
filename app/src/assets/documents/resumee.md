@@ -25,7 +25,7 @@ X people viewed this page and X resumes created by me.  If you will be helped by
 
 ## EDUCATION
 ### **Shonan Fujisawa University** | *April 2016 - March 2021*
-Bachelor of Arts in Environment and Information Studies. | GPA 2.7 / 4
+Bachelor of Arts in Everything but People and the Earth. | **GPA 3.1 / 4**
 
 ## GIVE ME A JOB OFFER
 To be honest, I don’t have a job offer since April 2021. If you have a attention to me, access to my RESUMEE and email me. その場合のメッセージは日本語でお願いしますm(_ _)m Because I am not good at English and want to work in Japan.

@@ -12,7 +12,7 @@ import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     MarkdownToHtmlModule
