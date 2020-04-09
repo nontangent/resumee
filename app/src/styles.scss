@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --document-width: 832px;
+    --document-height: calc(var(--document-width) / 832 * 1080);
+    --font-size: 16px;
+    --font-color: #050505;
+
+    font-size: var(--font-size);
+    color: var(--font-color);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+
+    background-color: #525659;
+    font-family: 'EB Garamond', serif;
+
+    margin: 0px;
+}
