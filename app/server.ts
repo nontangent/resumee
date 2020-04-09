@@ -2,16 +2,56 @@ import 'zone.js/dist/zone-node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import { join } from 'path';
+import { join, extname } from 'path';
 
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+import { v4 as uuidv4 } from 'uuid';
+
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 4000;
+const distFolder = join(process.cwd(), 'dist/resumee/browser');
+const uploadFolder = join(distFolder, 'assets/resumes');
+
+// File Uploading 
+import * as multer from 'multer';
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadFolder)
+  },
+  filename: function (req, file, cb) {
+    const filename = uuidv4();
+    cb(null, filename + '.md')
+  }
+});
+
+const upload = multer({
+  storage: storage, 
+  limits: {
+    fileSize: 10 * 1024,
+    files: 1
+  },
+  fileFilter: (req, file, cb) => {
+    const fileExtname = extname(file.originalname)
+    if(fileExtname != '.md') {
+      cb(new Error('upload file must be .md'));
+      cb(null, false);
+    } else{
+      cb(null, true);
+    }
+  },
+  rename: function (fieldname, filename) {
+    console.log("Rename...");
+    return filename + Date.now();
+  },
+});
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/resumee/browser');
+  
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
@@ -21,6 +61,13 @@ export function app() {
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+
+  server.get('/upload', (req, res) => res.sendFile(join(distFolder, 'assets/upload.html')))	
+
+  server.post('/upload', upload.single('file'), (req: any, res) => {
+    res.send(`http://${HOST}:${PORT}/assets/resumes/${req.file.filename}`);
+  })
+
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
@@ -38,12 +85,10 @@ export function app() {
 }
 
 function run() {
-  const port = process.env.PORT || 4000;
-
   // Start up the Node server
   const server = app();
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+  server.listen(PORT, () => {
+    console.log(`Node Express server listening on http://localhost:${PORT}`);
   });
 }
 
