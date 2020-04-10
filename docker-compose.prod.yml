@@ -25,7 +25,7 @@ services:
     environment:
       DOMAINS: 'resumee.work -> http://web:4000'
       STAGE: local
-      # STAAGE: production
+      # STAGE: production
     volumes:
       - https-portal:/var/lib/https-portal
     depends_on:
