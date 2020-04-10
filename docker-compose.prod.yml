@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    image: nontan18/resumee:latest
+    image: registry.gitlab.com/nontan/resumee:latest
     ports:
       - "4000:4000"
     restart: always
