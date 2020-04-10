@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { AnalyticsService } from './shared/services/analytics';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId, 
     public appService: AppService,
-    private router: Router
+    private router: Router,
+    private analytics: AnalyticsService
   ) { }
 
   get isBrowser(): boolean {
