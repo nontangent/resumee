@@ -4,26 +4,20 @@ services:
   web:
     build:
       context: .
-      # args:
-        # COMMAND: develop
     ports:
-      - "4000:4000"
       - "4200:4200"
     working_dir: /root/app
-
     environment:
-      EXPRESS_HOST: commons.ruskinics.com
+      EXPRESS_HOST: localhost
       EXPRESS_PORT: 4200
-      API_HOST: api.ruskinics.com
     volumes:
-      # - ./app:/root/app
+      - ./app:/root/app
       - ./scripts:/root/app/scripts
       - node_modules:/root/app/node_modules
-    # command: serve
     command: develop
-    # command: ng serve --aot --host 0.0.0.0
-    # command: npm install
 
 volumes:
   node_modules:
+    driver: local
+  resumes:
     driver: local

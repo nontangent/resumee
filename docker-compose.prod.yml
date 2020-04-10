@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+    restart: always
+    working_dir: /root/app
+    environment:
+      EXPRESS_HOST: resumee.work
+      EXPRESS_PORT: 4000
+    volumes:
+      - ./scripts:/root/app/scripts
+      - node_modules:/root/app/node_modules
+      - resumes:/root/app/dist/resumee/browser/assets/resumes
+    command: serve
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    environment:
+      DOMAINS: 'resumee.work -> http://web:4000'
+      STAGE: local
+      # STAAGE: production
+    volumes:
+      - https-portal:/var/lib/https-portal
+    depends_on:
+      - web
+
+volumes:
+  node_modules:
+    driver: local
+  resumes:
+    driver: local
+  https-portal:
+    driver: local

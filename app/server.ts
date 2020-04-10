@@ -10,8 +10,8 @@ import { existsSync } from 'fs';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 4200;
+const HOST = process.env.EXPRESS_HOST || 'localhost';
+const PORT = process.env.EXPRESS_PORT || 4000;
 const distFolder = join(process.cwd(), 'dist/resumee/browser');
 const uploadFolder = join(distFolder, 'assets/resumes');
 
@@ -65,10 +65,11 @@ export function app() {
   server.get('/upload', (req, res) => res.sendFile(join(distFolder, 'assets/upload.html')))	
 
   server.post('/upload', upload.single('file'), (req: any, res) => {
-    res.json({
-      // target: `http://${HOST}:${PORT}/assets/resumes/${req.file.filename}`
-      target: `http://${HOST}:${PORT}/assets/resumes/${req.file.filename}`
-    });
+    const target = HOST == 'localhost' ? 
+    `http://${HOST}:${PORT}/assets/resumes/${req.file.filename}` :
+    `https://${HOST}/assets/resumes/${req.file.filename}` ;
+
+    res.json({ target: target });
   })
 
 

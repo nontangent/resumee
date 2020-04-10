@@ -24,6 +24,8 @@ COPY ./app /root/app
 COPY ./scripts /root/app/scripts
 RUN /root/app/scripts/entry $COMMAND
 
+VOLUME /root/app/dist/resumee/browser/assets/resumes
+
 ENTRYPOINT ["./scripts/entry"]
 CMD ["npm", "start"]
 # CMD $COMMAND
