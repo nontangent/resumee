@@ -41,7 +41,10 @@ master-pushed-build:
     - docker build --build-arg NPM_TOKEN="$NPM_TOKEN" --build-arg COMMAND=build -t "$CI_REGISTRY_IMAGE:nightly" .
     - docker push "$CI_REGISTRY_IMAGE:nightly" 
   rules:
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master" && !$CI_MERGE_REQUEST_ID'
+    - if: $CI_MERGE_REQUEST_ID
+      when: never
+    - if: $CI_COMMIT_BRANCH == "master"
+  
 
 master-merged-build:
   stage: build
