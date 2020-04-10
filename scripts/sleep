@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+while :
+do
+  sleep 10
+done

@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+      # args:
+        # COMMAND: develop
+    ports:
+      - "4000:4000"
+      - "4200:4200"
+    working_dir: /root/app
+
+    environment:
+      # NPM_TOKEN: b4a04240-4273-49b1-92f2-986af6d89479
+      EXPRESS_HOST: commons.ruskinics.com
+      EXPRESS_PORT: 4200
+      API_HOST: api.ruskinics.com
+    volumes:
+      # - ./app:/root/app
+      - ./scripts:/root/app/scripts
+      - node_modules:/root/app/node_modules
+    # command: serve
+    command: develop
+    # command: ng serve --aot --host 0.0.0.0
+    # command: npm install
+
+volumes:
+  node_modules:
+    driver: local
