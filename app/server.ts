@@ -11,7 +11,7 @@ import { existsSync } from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 
 const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4200;
 const distFolder = join(process.cwd(), 'dist/resumee/browser');
 const uploadFolder = join(distFolder, 'assets/resumes');
 
@@ -65,16 +65,25 @@ export function app() {
   server.get('/upload', (req, res) => res.sendFile(join(distFolder, 'assets/upload.html')))	
 
   server.post('/upload', upload.single('file'), (req: any, res) => {
-    res.send(`http://${HOST}:${PORT}/assets/resumes/${req.file.filename}`);
+    res.json({
+      // target: `http://${HOST}:${PORT}/assets/resumes/${req.file.filename}`
+      target: `http://${HOST}:${PORT}/assets/resumes/${req.file.filename}`
+    });
   })
 
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  server.get('*.*', express.static(distFolder, {
-    maxAge: '1y'
-  }));
+  server.get('*.*', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Methods', 'GET')
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Content-Type, Authorization, access_token'
+    )
+    express.static(distFolder, {maxAge: '1y'})(req, res, next);
+  });
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {

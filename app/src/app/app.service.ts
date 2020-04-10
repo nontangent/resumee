@@ -50,4 +50,10 @@ export class AppService {
     this.metaService.addTag({property: 'twitter:site', content: '@resumee'});
     this.metaService.addTag({property: 'twitter:creator', content: '@resumee'});
   }
+
+  uploadMarkdown(file: File) {
+    let data = new FormData();
+    data.append('file', file, file.name);
+    return this.httpClient.post('upload', data)
+  }
 }

@@ -1,3 +1,10 @@
 <article>
   <div class="contents" [innerHTML]="appService.resumeInMD | MarkdownToHtml"></div>
 </article>
+<input
+  type="file"
+  (change)="selectedFiles($event.target.files)"
+  value="This is Hidden But You can register file by this input."
+  #fileInput
+  style="display: none;"
+>
