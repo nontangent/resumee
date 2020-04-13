@@ -10,8 +10,10 @@ import { existsSync } from 'fs';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const HOST = process.env.EXPRESS_HOST || 'localhost';
-const PORT = process.env.EXPRESS_PORT || 4000;
+const HOST = process.env.HOST || 'localhost';
+// const PORT = 4200;
+const PORT = process.env.PORT || 4000;
+console.log(`Express server is started ${PORT}`)
 const distFolder = join(process.cwd(), 'dist/resumee/browser');
 const uploadFolder = join(distFolder, 'assets/resumes');
 

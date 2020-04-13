@@ -8,8 +8,8 @@ services:
       - "4200:4200"
     working_dir: /root/app
     environment:
-      EXPRESS_HOST: localhost
-      EXPRESS_PORT: 4200
+      HOST: localhost
+      PORT: 4200
     volumes:
       - ./app:/root/app
       - ./scripts:/root/app/scripts

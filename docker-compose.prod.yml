@@ -8,8 +8,8 @@ services:
     restart: always
     working_dir: /root/app
     environment:
-      EXPRESS_HOST: resumee.work
-      EXPRESS_PORT: 4000
+      HOST: resumee.work
+      PORT: 4000
     volumes:
       - ./scripts:/root/app/scripts
       - node_modules:/root/app/node_modules
