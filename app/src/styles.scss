@@ -1,9 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'responsive';
+
 :root {
-    --document-width: 832px;
-    --document-height: calc(var(--document-width) / 832 * 1080);
-    --font-size: 16px;
+		@include xxl {
+			--document-width: 832px;
+			body {
+				display: flex;
+			}
+		}
+	
+		@include xl {
+			--document-width: 832px;
+			body {
+				display: flex;
+			}
+
+		}
+
+		@include lg {
+			--document-width: 832px;
+			body {
+				display: flex;
+			}
+		}
+
+		@include md {
+			--document-width: 100vw;
+			body {
+				display: flex;
+			}
+		}
+
+		@include sm {
+			--document-width: 832px;
+			body {
+				display: block;		
+			}
+		}
+
+		@include xs {
+			--document-width: 832px;
+			body {
+				display: block;		
+			}
+		}
+
+    // --document-width: 100vw;
+    --font-size: calc(var(--document-width) / 832 * 16);
     --font-color: #050505;
 
     font-size: var(--font-size);
@@ -11,7 +55,6 @@
 }
 
 body {
-    display: flex;
     justify-content: center;
 
     background-color: #525659;

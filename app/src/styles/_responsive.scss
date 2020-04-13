@@ -1,0 +1,39 @@
+@mixin xxl() {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
+
+@mixin xl() {
+  @media screen and (min-width: 1200px) and (max-width: 1600px) {
+    @content;
+  }
+}
+
+@mixin lg() {
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+// Tablet
+@mixin md() {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+// Mobile
+@mixin sm() {
+  @media screen and (min-width: 576px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+// Mobile
+@mixin xs() {
+  @media screen and (max-width: 576px) {
+    @content;
+  }
+}
