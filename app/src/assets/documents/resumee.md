@@ -1,7 +1,10 @@
+<!-- 見出しに氏名を書いてください -->
 # RESUMEE WORK
-Twitter | [Github](https://github.com/nontan18)  
+<!-- 次の見出しまでに書いたことがセンタリングして表示されます -->
+<!-- 電話番号やメールアドレスなどの連絡先を書きましょう -->
+Twitter † [Github](https://github.com/nontan18)  
 [https://resumee.work](https://resumee.work)  
-(+81)01-2344-6789 ☆ resume.work@ruskinics.com  
+(+81)01-2344-6789 † resume.work@ruskinics.com  
 
 ## OBJECTIVE
 One day, my college senior told me to apply for a job at Google, and when I saw the selection page, I was shocked! He said, “Write a “resume” in English and turn it in! What’s a “resume”? You mean the ones they hand out in college? I heard from a follower that it was a text written by LaTeX! So for friends who can only write Markdown like me, I’ve started a job to render it to look like it!
