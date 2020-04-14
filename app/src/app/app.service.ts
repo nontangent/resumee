@@ -3,6 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import * as operators from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
+import { environment } from '../environments/environment';
+
+const BASE_URL = environment.production ? 
+	'https://resumee.work' :
+	'http://localhost:4200';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +25,7 @@ export class AppService {
       
       console.debug('params:', params);
 
-      const target = params?.target || 'https://raw.githubusercontent.com/nontan18/resumee/master/app/src/assets/documents/resumee.md'
+      const target = params?.target || BASE_URL + '/assets/documents/resumee.md'
       console.log('target:', target);
 
       this.getResumeInMD(target).pipe(
@@ -34,7 +39,7 @@ export class AppService {
     })
   }
 
-  getResumeInMD(url: string = 'assets/documents/resumee.md') {
+  getResumeInMD(url: string = BASE_URL + '/assets/documents/resumee.md') {
     return this.httpClient.get(url, {responseType: 'text'})
   }
 
@@ -44,11 +49,11 @@ export class AppService {
     this.metaService.addTag({property: 'og:description', content: resumeInMD});
     this.metaService.addTag({property: 'og:type', content: 'article'});
     this.metaService.addTag({property: 'og:url', content: 'https://resumee.work'});
-    this.metaService.addTag({property: 'og:image', content: ''});
+    this.metaService.addTag({property: 'og:image', content: 'https://resumee.work/assets/img/ogp.png'});
     this.metaService.addTag({property: 'fb:app_id', content: 'this.fbAppId'});
-    this.metaService.addTag({property: 'twitter:card', content: 'summary'});
-    this.metaService.addTag({property: 'twitter:site', content: '@resumee'});
-    this.metaService.addTag({property: 'twitter:creator', content: '@resumee'});
+    this.metaService.addTag({property: 'twitter:card', content: 'large_summary'});
+    this.metaService.addTag({property: 'twitter:site', content: '@nontan_univ'});
+    this.metaService.addTag({property: 'twitter:creator', content: '@nontan_univ'});
   }
 
   uploadMarkdown(file: File) {

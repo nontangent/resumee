@@ -49,7 +49,7 @@
     // --document-width: 100vw;
     --font-size: calc(var(--document-width) / 832 * 16);
     --font-color: #050505;
-
+		
     font-size: var(--font-size);
     color: var(--font-color);
 }
@@ -58,7 +58,7 @@ body {
     justify-content: center;
 
     background-color: #525659;
-    font-family: 'EB Garamond', serif;
+    font-family: 'EB Garamond', 'Sawarabi Mincho', serif;
 
     margin: 0px;
 }

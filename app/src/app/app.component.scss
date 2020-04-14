@@ -3,23 +3,28 @@
 
     
     article {
-        display: block;
+        background-color: white;
+	  	  display: block;
         width: var(--document-width);
         height: calc(var(--document-width) / 832 * 1080);
 				overflow: hidden;
     }
 
     div.contents {
-        background-color: white;
-        --padding-top: calc(var(--document-width) / 832 * 43);
-        --padding-bottom: calc(var(--document-width) / 832 * 43);
-        --padding-left: calc(var(--document-width) / 832 * 73);
-        --padding-right: calc(var(--document-width) / 832 * 73);
-        padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
-        width: calc(100% - var(--padding-left) - var(--padding-right));
-        height: calc(100% - var(--padding-top) - var(--padding-bottom));
+        --margin-top: calc(var(--document-width) / 832 * 43);
+        --margin-bottom: calc(var(--document-width) / 832 * 43);
+        --margin-left: calc(var(--document-width) / 832 * 73);
+        --margin-right: calc(var(--document-width) / 832 * 73);
+        margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+        width: calc(100% - var(--margin-left) - var(--margin-right));
+        height: calc(100% - var(--margin-top) - var(--margin-bottom));
+				overflow: hidden;
 
         ::ng-deep {
+
+						h1, h2, h3 {
+								font-family: 'EB Garamond', 'Sawarabi Gothic', serif;
+						}
 
             h1, h2, h3, h4, h5, h6, p, ul {
                 font-weight: normal;
@@ -70,7 +75,6 @@
             }
 
             p {
-                letter-spacing: 0.02rem;
                 line-height: 1.2rem;
                 &:first-of-type {
                     text-align: center;
