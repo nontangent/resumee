@@ -31,7 +31,7 @@ export class AppService {
       this.getResumeInMD(target).pipe(
         operators.take(1)
       ).subscribe((resumeInMD) => {
-        console.log('resumeInMD:', resumeInMD);
+        console.debug('resumeInMD:', resumeInMD);
         this.resumeInMD = resumeInMD;
         this.setMetaTag(resumeInMD);
       });
