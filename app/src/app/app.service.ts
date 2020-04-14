@@ -51,7 +51,7 @@ export class AppService {
     this.metaService.addTag({property: 'og:url', content: 'https://resumee.work'});
     this.metaService.addTag({property: 'og:image', content: 'https://resumee.work/assets/img/ogp.png'});
     this.metaService.addTag({property: 'fb:app_id', content: 'this.fbAppId'});
-    this.metaService.addTag({property: 'twitter:card', content: 'large_summary'});
+    this.metaService.addTag({property: 'twitter:card', content: 'summary_large_image'});
     this.metaService.addTag({property: 'twitter:site', content: '@nontan_univ'});
     this.metaService.addTag({property: 'twitter:creator', content: '@nontan_univ'});
   }
