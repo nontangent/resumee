@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import * as operators from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
@@ -16,6 +17,13 @@ export class AppService {
 
   resumeInMD: string = '';
 	target: string = this.getUrl('/resumes/resumee.md');
+	target$: Observable<string> = this.route.queryParams.pipe(
+		operators.map((params) => {
+			console.debug('params:', params);
+			const target = params?.target || BASE_URL + '/resumes/resumee.md';
+			return target
+		}),
+	);
 
 	get targetBasename(): string {
 		return basename(this.target);
@@ -26,22 +34,18 @@ export class AppService {
     private route: ActivatedRoute,
     private metaService: Meta
   ) {
-    this.route.queryParams.subscribe((params) => {
-      
-      console.debug('params:', params);
 
-      this.target = params?.target || BASE_URL + '/resumes/resumee.md'
-      console.log('this.target:', this.target);
+		this.target$.pipe(
+			operators.switchMap((target) => {
+				this.target = target;
+				return this.getResumeInMD(this.target);		
+			}),
+		).subscribe((resumeInMD: string) => {
+			console.debug('resumeInMD:', resumeInMD);
+			this.resumeInMD = resumeInMD;
+			this.setMetaTag(resumeInMD);
+		});
 
-      this.getResumeInMD(this.target).pipe(
-        operators.take(1)
-      ).subscribe((resumeInMD) => {
-        console.debug('resumeInMD:', resumeInMD);
-        this.resumeInMD = resumeInMD;
-        this.setMetaTag(resumeInMD);
-      });
-
-    })
   }
 
 	getUrl(path: string): string {
