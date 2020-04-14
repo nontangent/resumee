@@ -10,6 +10,8 @@ services:
     environment:
       HOST: resumee.work
       PORT: 4000
+      GOOGLE_CREDIENTIAL_JSON_BASE64: ""
+      GOOGLE_ANALYTICS_VIEW_ID: ""
     volumes:
       - ./scripts:/root/app/scripts
       - node_modules:/root/app/node_modules
@@ -24,8 +26,7 @@ services:
     restart: always
     environment:
       DOMAINS: 'resumee.work -> http://web:4000'
-      STAGE: local
-      # STAGE: production
+      STAGE: production
     volumes:
       - https-portal:/var/lib/https-portal
     depends_on:

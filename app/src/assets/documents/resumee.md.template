@@ -11,7 +11,7 @@ One day, my college senior told me to apply for a job at Google, and when I saw 
 
 ## EXPERIENCE
 - Read and agreed to the **TERMS AND CONDITION** below.
-- Downloaded [“resumee.md”](https://resumee.work/assets/documents/resumee.md) from among the number of stars on the Internet.
+- Downloaded [“resumee.md”](https://resumee.work/resumes/resumee.md) from among the number of stars on the Internet.
 - Edited “resumee.md” with the help of [DeepL](https://www.deepl.com/en/translator) who learned enough to leave [Google](https://google.com) in charge
 - Dragged the edited “resumee.md” 4 times the width of desktop and dropped onto this page.
 - Published my resume by [resumee.work](https://resumee.work) and shared the link with you.
@@ -20,12 +20,12 @@ One day, my college senior told me to apply for a job at Google, and when I saw 
 I’m doing some Markdown proselytizing on Github! Unfortunately, I’m still the only contributor, but I think true leadership is to keep fighting for what you believe in, even if it’s just one person!
 
 ## TECHNICAL STRENGTH
-**Programming Languages**   Typescript, Markdown  
-**Frameworks and Services** Angular 9, Express, Docker
+**Programming Languages**   Typescript 3.7, Markdown  
+**Frameworks and Software** Angular 9, Express 4, Docker
 
 ## AWARDS
 ### **Nothing but…**
-X people viewed this page and X resumes created by me.  If you will be helped by me and get a job, please let me know it.
+{{ pv }} people viewed this page and {{ number }} resumes created by me.  If you will be helped by me and get a job, please let me know it.
 
 ## EDUCATION
 ### **Shonan Fujisawa University** | *April 2016 - March 2021*

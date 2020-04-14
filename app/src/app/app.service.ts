@@ -25,7 +25,7 @@ export class AppService {
       
       console.debug('params:', params);
 
-      const target = params?.target || BASE_URL + '/assets/documents/resumee.md'
+      const target = params?.target || BASE_URL + '/resumes/resumee.md'
       console.log('target:', target);
 
       this.getResumeInMD(target).pipe(
@@ -39,7 +39,7 @@ export class AppService {
     })
   }
 
-  getResumeInMD(url: string = BASE_URL + '/assets/documents/resumee.md') {
+  getResumeInMD(url: string = BASE_URL + '/resumes/resumee.md') {
     return this.httpClient.get(url, {responseType: 'text'})
   }
 

@@ -42,8 +42,8 @@ router.get('/', (req, res) => res.sendFile(join(settings.DIST_DIR, 'assets/uploa
 
 router.post('/', upload.single('file'), (req: any, res) => {
 	const target = settings.HOST == 'localhost' ? 
-		`http://${settings.HOST}:${settings.PORT}/assets/resumes/${req.file.filename}` :
-    `https://${settings.HOST}/assets/resumes/${req.file.filename}` ;
+		`http://${settings.HOST}:${settings.PORT}/resumes/${req.file.filename}` :
+    `https://${settings.HOST}/resumes/${req.file.filename}` ;
 	res.json({ target: target });
 })
 

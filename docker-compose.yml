@@ -10,6 +10,8 @@ services:
     environment:
       HOST: localhost
       PORT: 4200
+      GOOGLE_CREDIENTIAL_JSON_BASE64: ""
+      GOOGLE_ANALYTICS_VIEW_ID: ""
     volumes:
       - ./app:/root/app
       - ./scripts:/root/app/scripts
