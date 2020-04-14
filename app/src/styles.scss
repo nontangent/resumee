@@ -2,7 +2,17 @@
 
 @import 'responsive';
 
+@page {
+  margin: 0;
+	size: portrait;
+}
+
 :root {
+		--document-width: 832px;
+		body {
+			display: flex;
+		}
+
 		@include xxl {
 			--document-width: 832px;
 			body {

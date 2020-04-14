@@ -1,23 +1,27 @@
 :host {
-    display: block;
+	--margin-top: calc(var(--document-width) / 832 * 43);
+	--margin-bottom: calc(var(--document-width) / 832 * 43);
+	--margin-left: calc(var(--document-width) / 832 * 73);
+	--margin-right: calc(var(--document-width) / 832 * 73);
+}
 
+:host {
+    display: block;
+		width: var(--document-width);
     
     article {
+				position: relative;
         background-color: white;
 	  	  display: block;
         width: var(--document-width);
-        height: calc(var(--document-width) / 832 * 1080);
+        height: calc(var(--document-width) / 832 * 1066);
 				overflow: hidden;
     }
 
     div.contents {
-        --margin-top: calc(var(--document-width) / 832 * 43);
-        --margin-bottom: calc(var(--document-width) / 832 * 43);
-        --margin-left: calc(var(--document-width) / 832 * 73);
-        --margin-right: calc(var(--document-width) / 832 * 73);
         margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
         width: calc(100% - var(--margin-left) - var(--margin-right));
-        height: calc(100% - var(--margin-top) - var(--margin-bottom));
+        min-height: calc(100% - var(--margin-top) - var(--margin-bottom));
 				overflow: hidden;
 
         ::ng-deep {
@@ -96,6 +100,35 @@
             }
 
         }
-
     }
+
+ 		div.options {
+ 			position: absolute;
+ 			bottom: var(--margin-bottom);
+			
+			display: flex;
+			width: calc(var(--document-width) - var(--margin-right) - var(--margin-left));
+			
+			margin-left: var(--margin-left);
+			margin-right: var(--margin-right);
+	
+			flex-direction: row;
+			justify-content: space-between;
+
+	    a, a:link, a:hover, a:visited, a:active {
+	        text-decoration: none;
+				color: #454CFC;
+	    }
+
+			span {
+				cursor: pointer;
+				color: #454CFC;
+			}
+
+
+			@media print {
+				display: none;
+			}
+ 		}
+
 }

@@ -84,6 +84,10 @@ export class AppComponent implements OnInit {
 
   }
 
+	printPdf() {
+		window.print();
+	}
+
 }
 
 function getExt(filename: string) {

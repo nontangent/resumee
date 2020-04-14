@@ -15,6 +15,7 @@ const BASE_URL = environment.production ?
 export class AppService {
 
   resumeInMD: string = '';
+	target: string = this.getUrl('/resumes/resumee.md');
 
   constructor(
     private httpClient: HttpClient,
@@ -25,10 +26,10 @@ export class AppService {
       
       console.debug('params:', params);
 
-      const target = params?.target || BASE_URL + '/resumes/resumee.md'
-      console.log('target:', target);
+      this.target = params?.target || BASE_URL + '/resumes/resumee.md'
+      console.log('this.target:', this.target);
 
-      this.getResumeInMD(target).pipe(
+      this.getResumeInMD(this.target).pipe(
         operators.take(1)
       ).subscribe((resumeInMD) => {
         console.debug('resumeInMD:', resumeInMD);
@@ -38,6 +39,10 @@ export class AppService {
 
     })
   }
+
+	getUrl(path: string): string {
+		return BASE_URL + path
+	}
 
   getResumeInMD(url: string = BASE_URL + '/resumes/resumee.md') {
     return this.httpClient.get(url, {responseType: 'text'})

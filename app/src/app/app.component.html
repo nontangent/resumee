@@ -1,5 +1,9 @@
 <article>
-  <div class="contents" [innerHTML]="appService.resumeInMD | MarkdownToHtml"></div>
+ 	<div class="contents" [innerHTML]="appService.resumeInMD | MarkdownToHtml"></div>
+	<div class="options">
+		<span><a [href]="appService.target">Download "resume.md"</a></span>
+		<span (click)="printPdf()">Print as PDF</span>
+	</div>
 </article>
 <input
   type="file"
