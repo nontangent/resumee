@@ -17,6 +17,10 @@ export class AppService {
   resumeInMD: string = '';
 	target: string = this.getUrl('/resumes/resumee.md');
 
+	get targetBasename(): string {
+		return basename(this.target);
+	}
+
   constructor(
     private httpClient: HttpClient,
     private route: ActivatedRoute,
@@ -66,4 +70,8 @@ export class AppService {
     data.append('file', file, file.name);
     return this.httpClient.post('upload', data)
   }
+}
+
+function basename(path) {
+   return path.split('/').reverse()[0];
 }
