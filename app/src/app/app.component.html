@@ -1,6 +1,30 @@
 <router-outlet></router-outlet>
 <article>
- 	<div class="contents" [innerHTML]="appService.resumeInMD | MarkdownToHtml"></div>
+	<div class="qr">
+			<!-- <qr-code --> 
+			<!-- 	[value]="appService.getCurrentURL()" --> 
+			<!-- 	level="H" -->  
+			<!-- 	[size]="100" -->
+			<!-- 	[backgroundAlpha]="0" -->
+			<!-- 	foreground="#1f1f1f" -->
+			<!-- 	[canvas]="false" -->
+			<!-- ></qr-code> -->
+			<!-- <canvas #canvas></canvas> -->
+		<qrcode
+			colorDark="#1f1f1f"
+			colorLight="#fff"
+			[qrdata]="appService.getCurrentURL()" 
+			[width]="100" 
+			errorCorrectionLevel="Q"
+			elementType="img"
+			[margin]="0"
+			[usesvg]="true"
+		></qrcode>
+		<img class="badge" src="assets/img/badge.svg">
+	</div>
+
+	<div class="contents" [innerHTML]="appService.resumeInMD | MarkdownToHtml"></div>
+	
 	<div class="options">
 		<span><a [href]="appService.target">Download "{{ appService.targetBasename }}"</a></span>
 		<span (click)="printPdf()">Print  as PDF</span>

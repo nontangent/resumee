@@ -25,6 +25,7 @@
     "@angular/platform-server": "~9.1.1",
     "@angular/router": "~9.1.1",
     "@nguniversal/express-engine": "^9.1.0",
+    "angularx-qrcode": "^2.1.0",
     "express": "^4.15.2",
     "googleapis": "^48.0.0",
     "hashids": "^2.2.1",

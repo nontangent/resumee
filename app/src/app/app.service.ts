@@ -68,6 +68,10 @@ export class AppService {
     data.append('file', file, file.name);
     return this.httpClient.post('upload', data)
   }
+
+	getCurrentURL() {
+		return window.location.href
+	}
 }
 
 function basename(path) {

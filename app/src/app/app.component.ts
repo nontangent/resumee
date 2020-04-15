@@ -5,6 +5,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { AnalyticsService } from './shared/services/analytics';
 
+import * as QRCode from 'qrcode-svg';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -18,6 +18,40 @@
 				overflow: hidden;
     }
 
+		div.qr {
+			position: absolute;
+			top: calc(var(--margin-top) + 1.4rem);
+			right: var(--margin-right);
+			
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: calc(var(--document-width) / 832 * 90);
+	    height: calc(var(--document-width) / 832 * 90);
+
+			qrcode {
+				width: 100%;
+				height: 100%;
+				
+				::ng-deep {
+					div.qrcode {
+						width: 100%;
+						height: 100%;
+
+						img {
+							width: 100%;			
+							height: 100%;																																		
+						}							
+					}
+				}
+			}
+
+			img.badge {
+				position: absolute;
+				width: calc(var(--document-width) / 832 * 32);
+			}
+		}
+
     div.contents {
         margin: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
         width: calc(100% - var(--margin-left) - var(--margin-right));

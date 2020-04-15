@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
 import { Routes, RouterModule } from "@angular/router";
 
+import { QRCodeModule  } from 'angularx-qrcode';
+
 const routes: Routes = [
 	{
 		path: '',
@@ -27,7 +29,8 @@ const routes: Routes = [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     MarkdownToHtmlModule,
-		RouterModule.forRoot(routes)
+		RouterModule.forRoot(routes),
+		QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
