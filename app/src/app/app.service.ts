@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as operators from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
@@ -17,13 +17,7 @@ export class AppService {
 
   resumeInMD: string = '';
 	target: string = this.getUrl('/resumes/resumee.md');
-	target$: Observable<string> = this.route.queryParams.pipe(
-		operators.map((params) => {
-			console.debug('params:', params);
-			const target = params?.target || BASE_URL + '/resumes/resumee.md';
-			return target
-		}),
-	);
+	target$: Subject<string> = new Subject<string>();
 
 	get targetBasename(): string {
 		return basename(this.target);

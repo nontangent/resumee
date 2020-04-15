@@ -1,11 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http'; 
 import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
+import { Routes, RouterModule } from "@angular/router";
+
+const routes: Routes = [
+	{
+		path: '',
+		//pathMatch: 'full',
+		loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+	},
+	{
+		path: '**',
+		redirectTo: '',
+	}
+]
 
 @NgModule({
   declarations: [
@@ -13,9 +25,9 @@ import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
     HttpClientModule,
-    MarkdownToHtmlModule
+    MarkdownToHtmlModule,
+		RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
