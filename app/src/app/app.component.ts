@@ -13,6 +13,8 @@ import { AnalyticsService } from './shared/services/analytics';
 export class AppComponent implements OnInit {
   title = 'Resumee Work';
 
+	isQRVisible: boolean = true;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId, 
     public appService: AppService,
@@ -86,6 +88,10 @@ export class AppComponent implements OnInit {
 
 	printPdf() {
 		window.print();
+	}
+
+	changeQRVisibility() {
+		this.isQRVisible = this.isQRVisible ? false : true;
 	}
 
 }

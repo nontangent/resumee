@@ -28,6 +28,17 @@
 			justify-content: center;
 			width: calc(var(--document-width) / 832 * 90);
 	    height: calc(var(--document-width) / 832 * 90);
+			
+			opacity: 0;
+			transition: opacity 0.5s;
+
+			&.visible {
+				opacity: 1;
+			}
+
+			&:hover {
+				opacity: 0.5;
+			}
 
 			qrcode {
 				width: 100%;

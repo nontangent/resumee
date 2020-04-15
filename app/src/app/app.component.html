@@ -1,15 +1,6 @@
 <router-outlet></router-outlet>
 <article>
-	<div class="qr">
-			<!-- <qr-code --> 
-			<!-- 	[value]="appService.getCurrentURL()" --> 
-			<!-- 	level="H" -->  
-			<!-- 	[size]="100" -->
-			<!-- 	[backgroundAlpha]="0" -->
-			<!-- 	foreground="#1f1f1f" -->
-			<!-- 	[canvas]="false" -->
-			<!-- ></qr-code> -->
-			<!-- <canvas #canvas></canvas> -->
+	<div class="qr" (click)="changeQRVisibility()" [ngClass]="{'visible': isQRVisible}" value="クリックすると消えます。">
 		<qrcode
 			colorDark="#1f1f1f"
 			colorLight="#fff"
