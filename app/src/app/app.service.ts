@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import * as operators from 'rxjs/operators';
@@ -24,6 +25,8 @@ export class AppService {
 	}
 
   constructor(
+		@Inject(PLATFORM_ID) private platformId,
+
     private httpClient: HttpClient,
     private route: ActivatedRoute,
     private metaService: Meta
@@ -69,8 +72,11 @@ export class AppService {
     return this.httpClient.post('upload', data)
   }
 
-	getCurrentURL() {
-		return window.location.href
+	getCurrentURL(): string {
+		if (isPlatformBrowser(this.platformId)){
+			return window.location.href;
+		}
+		return '';
 	}
 }
 

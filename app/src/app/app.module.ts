@@ -29,7 +29,7 @@ const routes: Routes = [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     MarkdownToHtmlModule,
-		RouterModule.forRoot(routes),
+		RouterModule.forRoot(routes, {initialNavigation: 'enabled'}),
 		QRCodeModule
   ],
   providers: [],
